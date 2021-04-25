@@ -151,10 +151,6 @@
                 <label>Message</label>
                 <input type="text" class="form-control" name="message" id="message" placeholder="Enter the Details">
               </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-              </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
@@ -195,8 +191,24 @@
 <script src="httext-centerode.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 <script>
-  $("#submit-form").submit((e)=>{
+$(document).ready(function () {
+  $('#submit-form').validate({
+    rules:{
+      name:"required",
+      emaila:{ 
+        required:true,
+        email:true},
+      mobile:{ 
+        required:true,
+        minlength:10,
+        maxlength:12
+      }
+    },
+      submitHandler: function (form) {
+        $("#submit-form").submit((e)=>{
       e.preventDefault()
       $.ajax({
           url:"https://script.google.com/macros/s/AKfycbzoPVv53mtfKP4EV_9Vw9Lv1TGdlMpAEXhbql-gZP8rfftskX8puBNY2BV6jw3-Ptd68g/exec",
@@ -213,21 +225,10 @@
           }
       })
   })
-  $(document).ready(function(){
-    $("#submit-form").vaidate({
-      rules:{
-        name:"required",
-        emaila:{ 
-          required:true,
-          email:true},
-        mobile:{ 
-          required:true,
-          minlength:10,
-          maxlength:12
-        }
       }
-    })
-  })
-</script>
+  }); 
+});
+</script> 
+
 </body>
 </html>
