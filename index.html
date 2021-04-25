@@ -213,6 +213,21 @@
           }
       })
   })
+  $(document).ready(function(){
+    $("#submit-form").vaidate({
+      rules:{
+        name:"required",
+        emaila:{ 
+          required:true,
+          email:true},
+        mobile:{ 
+          required:true,
+          minlength:10,
+          maxlength:12
+        }
+      }
+    })
+  })
 </script>
 </body>
 </html>
