@@ -236,9 +236,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-  // validate contact form
-  $(function() {
-      $('#submit-form').validate({
+
+      var $formi=$('#submit-form').validate({
           rules: {
               name: {
                   required: true
@@ -259,13 +258,27 @@
               message: {
                   required: true
               },
-          
           },
-      
       })
-  });
+      if($formi.valid()){
+        $("#submit-form").submit((e)=>{
+              e.preventDefault()
+              $.ajax({
+                  url:"https://script.google.com/macros/s/AKfycbyoFdAuPBGC5C7fwuuioi-dh6uKKxLIHpP7Iv0VjkeVhErIgyHG4-0sGAeWT0gD-uFJ/exec",
+                  data:$("#submit-form").serialize(),
+                  method:"post",
+                  success:function (response){
+                      alert("Form submitted successfully")
+                      window.location.reload()
+                      //window.location.href="https://google.com"
+                  },
+                  error:function (err){
+                      alert("Something Error")
+      
+                  }
+              })
+          })
+      }
   </script>
-  
-
 </body>
 </html>
