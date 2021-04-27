@@ -239,7 +239,7 @@ $(document).ready(function () {
       name:"required",
       subject:"required",
       message:"required",
-      emaila:{ 
+      email:{ 
         required:true,
         email:true},
       mobile:{ 
@@ -252,7 +252,7 @@ $(document).ready(function () {
         $("#submit-form").submit((e)=>{
       e.preventDefault()
       $.ajax({
-          url:"https://script.google.com/macros/s/AKfycbzoPVv53mtfKP4EV_9Vw9Lv1TGdlMpAEXhbql-gZP8rfftskX8puBNY2BV6jw3-Ptd68g/exec",
+          url:"https://script.google.com/macros/s/AKfycbyoFdAuPBGC5C7fwuuioi-dh6uKKxLIHpP7Iv0VjkeVhErIgyHG4-0sGAeWT0gD-uFJ/exec",
           data:$("#submit-form").serialize(),
           method:"post",
           success:function (response){
